@@ -3,12 +3,10 @@
 
 {% block app_content %}
     <h1>Linux Command Reference</h1>
-    {% if form %}
     <hr/>
-    <h3>Quick Add</h3>
-    {{ wtf.quick_form(form) }}
-    <br>
-    {% endif %}
+    <a class="btn btn-primary" href="{{url_for('add_linux_commands')}}">Add Command</a>
+<br/>
+<hr/>
     {% for command in commands %}
         {% include '_command.html' %}
     {% endfor %}

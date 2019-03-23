@@ -83,7 +83,6 @@ def reset_password(token):
 
 @app.route('/linux_commands', methods=['GET','POST'])
 def linux_commands():
-    form = LinuxCommandForm()
 
     page = request.args.get('page', 1, type=int)
 
@@ -94,6 +93,12 @@ def linux_commands():
     prev_url = url_for('index', page=commands.prev_num) \
         if commands.has_prev else None
 
+    return render_template("linux_commands.html", title='Linux Commands',commands=commands.items,next_url=next_url, prev_url=prev_url)
+
+@app.route('/linux_commands/add', methods=['GET','POST'])
+def add_linux_commands():
+    form = LinuxCommandForm()
+
     if form.validate_on_submit():
         command = LinuxCommand(name=form.name.data, description=form.description.data)
         db.session.add(command)
@@ -101,7 +106,7 @@ def linux_commands():
         flash('Your post is now live!')
         return redirect(url_for('linux_commands'))
 
-    return render_template("linux_commands.html", title='Linux Commands',form=form,commands=commands.items,next_url=next_url, prev_url=prev_url)
+    return render_template("edit_linux_command.html", title='Linux Commands',form=form)
 
 @app.route('/linux_command/edit/<id>',methods=['GET','POST'])
 def edit_linux_command(id):
