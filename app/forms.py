@@ -1,7 +1,8 @@
 from app.models import User
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SubmitField, PasswordField, BooleanField
+from wtforms import StringField, TextAreaField, SubmitField, PasswordField, BooleanField, Label
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from flask_pagedown.fields import PageDownField
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -38,7 +39,7 @@ class ResetPasswordForm(FlaskForm):
 
 class LinuxCommandForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
-    description = StringField('Description', validators=[DataRequired()])
+    description = PageDownField('Description', validators=[DataRequired()])
     submit = SubmitField('Save')
     delete = SubmitField('Delete')
     cancel = SubmitField('Cancel')

@@ -34,10 +34,10 @@ class User(UserMixin, db.Model):
 class LinuxCommand(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    description = db.Column(db.String)
+    description = db.Column(db.Text)
 
     def __repr__(self):
-        return '<Linux Command {} - {} - {}>'.format(self.id,self.name,self.description)
+        return '<Linux Command {} - {}>'.format(self.id,self.name,self.description)
 
 @login.user_loader
 def load_user(id):
