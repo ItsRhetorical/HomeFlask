@@ -40,6 +40,7 @@ class ResetPasswordForm(FlaskForm):
 class LinuxCommandForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     description = PageDownField('Description', validators=[DataRequired()])
+    code = TextAreaField('Code')
     submit = SubmitField('Save')
     delete = SubmitField('Delete')
     cancel = SubmitField('Cancel')

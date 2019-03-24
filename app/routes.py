@@ -100,7 +100,7 @@ def add_linux_commands():
     form = LinuxCommandForm()
 
     if form.validate_on_submit():
-        command = LinuxCommand(name=form.name.data, description=form.description.data)
+        command = LinuxCommand(name=form.name.data, description=form.description.data, code=form.code.data)
         db.session.add(command)
         db.session.commit()
         flash('Your post is now live!')
@@ -119,12 +119,14 @@ def edit_linux_command(id):
     if form.validate_on_submit():
         command.name = form.name.data
         command.description = form.description.data
+        command.code = form.code.data
         db.session.commit()
         flash('Your post is now live!')
         return redirect(url_for('linux_commands'))
     elif request.method == 'GET':
         form.name.data = command.name
         form.description.data = command.description
+        form.code.data = command.code
     return render_template('edit_linux_command.html', form=form, name=command.name,description=command.description)
 
 @app.route('/linux_command/delete/<id>',methods=['GET','POST'])

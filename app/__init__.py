@@ -10,6 +10,7 @@ from flask_misaka import Misaka
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
@@ -20,6 +21,7 @@ mail = Mail(app)
 
 bootstrap = Bootstrap(app)
 
+# for adding markdown input and output
 pageDown = PageDown(app)
 misaka = Misaka(app)
 
