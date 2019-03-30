@@ -114,9 +114,7 @@ def edit_linux_command(id):
     command = LinuxCommand.query.filter_by(id=id).first_or_404()
     if form.delete.data:
         return redirect(url_for('delete_linux_command',id=id))
-    if form.cancel.data:
-        return redirect(url_for('linux_commands'))
-    if form.validate_on_submit():
+    if form.submit.data and form.validate_on_submit():
         command.name = form.name.data
         command.description = form.description.data
         command.code = form.code.data

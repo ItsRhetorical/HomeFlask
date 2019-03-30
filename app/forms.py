@@ -43,4 +43,3 @@ class LinuxCommandForm(FlaskForm):
     code = TextAreaField('Code')
     submit = SubmitField('Save')
     delete = SubmitField('Delete')
-    cancel = SubmitField('Cancel')

@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
     <h1>Linux Command Reference</h1>
@@ -7,9 +6,18 @@
     <a class="btn btn-primary" href="{{url_for('add_linux_commands')}}">Add Command</a>
 <br/>
 <hr/>
+<table class="table table-dark table-condensed">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Example</th>
+            <th>Description</th>
+        </tr>
+    </thead>
     {% for command in commands %}
         {% include '_command.html' %}
     {% endfor %}
+</table>
     <nav aria-label="...">
         <ul class="pager">
             <li class="previous{% if not prev_url %} disabled{% endif %}">
