@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<div class="row">
+<div class="btn-toolbar col-12" >
+    <button id="reset_button" type="button" onclick="resetTimer()" class="btn btn-danger" style="float: right; visibility: hidden">Reset</button>
+</div>
+</div>
+<div class="row">
+    <div class="col-12" >&nbsp;</div>
+</div>
+<div class="row">
+    <table id="BinaryDisplay" class="table text-center col-12 table-borderless" >
+        <thead>
+            <tr>
+                <td id="1h3"><div class="overlay" id="1h">0</div>&nbsp;</td>
+                <td id="0h3"><div class="overlay" id="0h">0</div>&nbsp;</td>
+                <td id="1m3"><div class="overlay" id="1m">0</div>&nbsp;</td>
+                <td id="0m3"><div class="overlay" id="0m">0</div>&nbsp;</td>
+                <td id="1s3"><div class="overlay" id="1s">0</div>&nbsp;</td>
+                <td id="0s3"><div class="overlay" id="0s">0</div>&nbsp;</td>
+                <td id="ds3"><div class="overlay" id="ds">0</div>&nbsp;</td>
+
+            </tr>
+            <tr>
+                <td id="1h2">&nbsp;</td>
+                <td id="0h2">&nbsp;</td>
+                <td id="1m2">&nbsp;</td>
+                <td id="0m2">&nbsp;</td>
+                <td id="1s2">&nbsp;</td>
+                <td id="0s2">&nbsp;</td>
+                <td id="ds2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td id="1h1">&nbsp;</td>
+                <td id="0h1">&nbsp;</td>
+                <td id="1m1">&nbsp;</td>
+                <td id="0m1">&nbsp;</td>
+                <td id="1s1">&nbsp;</td>
+                <td id="0s1">&nbsp;</td>
+                <td id="ds1">&nbsp;</td>
+            </tr>
+            <tr>
+                <td id="1h0">&nbsp;</td>
+                <td id="0h0">&nbsp;</td>
+                <td id="1m0">&nbsp;</td>
+                <td id="0m0">&nbsp;</td>
+                <td id="1s0">&nbsp;</td>
+                <td id="0s0">&nbsp;</td>
+                <td id="ds0">&nbsp;</td>
+            </tr>
+            <!--<tr>-->
+                <!--<td colspan="2" id="0h" >0</td>-->
+                <!--<td colspan="2" id="0m" >0</td>-->
+                <!--<td colspan="2" id="0s" >0</td>-->
+                <!--<td id="ds" >0</td>-->
+            <!--</tr>-->
+        </thead>
+    </table>
+
+</div>
+
+<style>
+    .overlay {
+        z-index: 2;
+        position: absolute;
+
+        color: red;
+        opacity: .5;
+        //border-style: solid;
+        text-align: center;
+        margin-left: 0px; margin-right:0px;
+
+        font-size: calc( 60px + (115 - 60) * ( (100vw - 400px) / ( 1200 - 400) ));
+
+        //font-size: calc( #{$min_font}px + (#{$max_font} - #{$min_font}) * ( (100vw - #{$min_width}px) / ( #{$max_width} - #{$min_width}) ));
+        //https://www.madebymike.com.au/writing/precise-control-responsive-typography/
+        //https://codepen.io/MadeByMike/pen/YPJJYv?editors=110
+
+    }
+
+    tr {
+        position: relative;
+    }
+
+    .table-borderless > tbody > tr > td,
+    .table-borderless > tbody > tr > th,
+    .table-borderless > tfoot > tr > td,
+    .table-borderless > tfoot > tr > th,
+    .table-borderless > thead > tr > td,
+    .table-borderless > thead > tr > th {
+
+        border: 1px solid white;
+    }
+</style>
+
+<script type="text/javascript" >
+    var ClockType = '{{ClockType}}'
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/clock.js') }}" ></script>
+{% endblock %}

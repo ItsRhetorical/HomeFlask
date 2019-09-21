@@ -133,3 +133,15 @@ def delete_linux_command(id):
     db.session.commit()
     flash('Command Deleted')
     return redirect(url_for('linux_commands'))
+
+
+
+@app.route('/stopwatch', methods=['GET'])
+@login_required
+def stopwatch():
+    return render_template("clock.html", title='Stopwatch', ClockType='Stopwatch')
+
+@app.route('/clock', methods=['GET'])
+@login_required
+def clock():
+    return render_template("clock.html", title='Clock', ClockType='Clock')
